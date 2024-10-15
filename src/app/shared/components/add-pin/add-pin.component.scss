@@ -1,0 +1,74 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // min-height: 100vh;
+  }
+  
+  .form-container {
+    width: 600px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    min-width: 160px;
+    text-align: end;
+    font-weight: 500;
+  }
+  
+  input, select {
+    height: 40px;
+    border-radius: 4px;
+  }
+  
+  input[type="file"] {
+    border: 1px solid #ced4da;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  
+  button {
+    width: 100%;
+    height: 45px;
+    font-weight: bold;
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #5a6268;
+  }
+  
+  .form-check-input {
+    margin-top: 0.3rem;
+  }
+  
+  .form-check-label {
+    margin-right: 15px;
+  }
+
+  .nv-file-over { 
+    width:  100%;
+    border: dotted 3px green;
+    height: 40px;
+    border-radius: 4px;
+    padding: 6px 12px;
+   } /* Default class applied to drop zones on over */
+  .my-drop-zone { 
+    width:  100%;
+    border: 1px solid #dee2e6;
+    height: 40px;
+    border-radius: 4px;
+    padding: 6px 12px;
+  }
