@@ -4,8 +4,6 @@ import { AppService } from '../../service/app.service';
 import { FileUploader } from 'ng2-file-upload';
 import { DomSanitizer } from '@angular/platform-browser';
 
-const URLLink = 'http://localhost:3000/fileupload/';
-
 @Component({
   selector: 'app-add-pin',
   templateUrl: './add-pin.component.html',
@@ -18,40 +16,8 @@ export class AddPinComponent {
   public collaboratorData : any = [];
   public isSubmitted = false;
 
-  url= URLLink;
-  disableMultipart = false;
-  autoUpload= true;
-  method= 'post';
-  itemAlias= 'attachment';
-  allowedFileType= ['image'];
-  public uploader: FileUploader;
-  hasBaseDropZoneOver:boolean = false;
-  response:string='';
-
   constructor(private sanitizer: DomSanitizer,private appService:AppService,private fb: FormBuilder,){
     this.setForm();
-
-    this.uploader = new FileUploader({
-      url: URLLink,
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      formatDataFunction: async (item:any) => {
-        return new Promise( (resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      }
-    });
- 
-    this.hasBaseDropZoneOver = false;
- 
-    this.response = '';
- 
-    this.uploader.response.subscribe( res => this.response = res );
   }
 
   setForm(){
@@ -74,31 +40,21 @@ export class AddPinComponent {
     this.isSubmitted = true;
     if(this.addPinForm.valid){
       this.isSubmitted = false;
-      let model ={
-        id : new Date().getTime(),
-        ...this.addPinForm.value
-      }
-      let localData : any
-      if(localStorage.getItem('pinListData')){
-        localData = JSON.parse(localStorage.getItem('pinListData') || '');
-        localData.push(model);
-      }else{
-        localData = [model];
-      }
-      localStorage.setItem('pinListData',JSON.stringify(localData));
-      this.closeModal.emit();
-    }else{
-      // this.isSubmitted = false;
+      this.closeModal.emit(this.addPinForm.value);
     }
   }
 
-  fileOverBase(event:any){
-   this.hasBaseDropZoneOver = event;
+  onDNDSelected(event:any){
+   this.fileOverBase(event)
   }
 
   onFileSelected(event:any){
-    const file: File = event[0];
-    this.addPinForm.get('image')?.setValue(this.setLocalCover(event));
+    this.fileOverBase(event.target.files)
+  }
+
+  fileOverBase(event:any){
+  const file = this.setLocalCover(event);
+  this.addPinForm.get('image')?.setValue(file);
   }
 
   setLocalCover(event:any) {

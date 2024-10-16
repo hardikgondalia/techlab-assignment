@@ -19,12 +19,15 @@
         <div class="mb-3 d-flex align-items-center gap-3">
           <label for="image" class="form-label">Select Image*:</label>
           <span class="w-100">
-            <div ng2FileDrop
+            <!-- <div ng2FileDrop
             [ngClass]="hasBaseDropZoneOver ? 'nv-file-over' : 'my-drop-zone'"
             (fileOver)="fileOverBase($event)"
             (onFileDrop)="onFileSelected($event)"
             [uploader]="uploader">
            Choose & Drag and Drop files here
+          </div> -->
+          <div  class="w-100" appDnd (fileDropped)="onDNDSelected($event)">
+            <input type="file" id="fileInput" class="custom-file-input" accept="image/png, image/gif, image/jpeg" (change)="onFileSelected($event)">
           </div>
           <div *ngIf="addPinForm.get('image')?.touched || isSubmitted">
             <span *ngIf="addPinForm.get('image')?.hasError('required')" class="mb-0 text-danger">image is required</span>

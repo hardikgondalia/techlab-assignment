@@ -1,0 +1,86 @@
+<div class="container mt-5">
+
+    <div class="header-container d-flex justify-content-between align-items-end mb-4">
+      <h2 class="mb-0">List of pins</h2>
+      <!-- Buttons -->
+      <div class="d-flex flex-column gap-1">
+        <button class="btn btn-secondary mb-2" (click)="addCustomerModalToggle(true)">+ Add Customer</button>
+        <button class="btn btn-secondary" (click)="addPinModalToggl(true)">+ Add Pin</button>
+      </div>
+    </div>
+      
+      
+      <!-- Table -->
+      <div *ngIf="pinListData?.length>0">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Collaboratory</th>
+            <th>Privacy</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of pinListData,let index = index">
+            <td>{{data?.title}}</td>
+            <td><img [src]="data?.image?.changingThisBreaksApplicationSecurity" width="100" height="100"></td>
+            <td>
+              <span *ngFor="let value of data?.collaborators">
+                   {{getCustomerById(value)}}<br />
+              </span>
+            </td>
+            <td>{{data?.privacy}}</td>
+            <td (click)="deletePin(index)"><i class="bi bi-trash3-fill"></i></td>
+          </tr>
+          <!-- <tr>
+            <td>Pin 2</td>
+            <td><div class="image-placeholder"></div></td>
+            <td>
+              Customer 2 <br />
+              Customer 3
+            </td>
+            <td>Private</td>
+          </tr>
+          <tr>
+            <td>Pin 3</td>
+            <td><div class="image-placeholder"></div></td>
+            <td>
+              Customer 1 <br />
+              Customer 3
+            </td>
+            <td>Public</td>
+          </tr>
+          <tr>
+            <td>Pin 4</td>
+            <td><div class="image-placeholder"></div></td>
+            <td>
+              Customer 5 <br />
+              Customer 2
+            </td>
+            <td>Private</td>
+          </tr> -->
+        </tbody>
+      </table>
+      </div>
+  
+      <div *ngIf="pinListData?.length===0" class="no-available d-flex justify-content-center align-items-center">
+        <span>
+          No Pins Available
+        </span>
+      </div>
+    </div>
+  
+  
+    <div class="custom-modal-backdrop" *ngIf="addCustomerOpen">
+      <div  appClickOutside (clickOutside)="clickedOutside()">
+        <app-add-customer (closeModal)="addCustomerModalToggle(false,$event)"></app-add-customer>
+      </div>
+    </div>
+  
+    <div class="custom-modal-backdrop" *ngIf="addPinOpen">
+      <div  appClickOutside (clickOutside)="clickedOutside()">
+        <app-add-pin (closeModal)="addPinModalToggl(false,$event)"></app-add-pin>
+      </div>
+    </div>

@@ -60,32 +60,11 @@ export class AddCustomerComponent implements OnInit{
     }
   }
 
-  countryChanged(event:any){
-
-  }
-
   createCustomer(){
     this.isSubmitted = true;
-    
     if(this.addCustomerForm.valid){
       this.isSubmitted = false;
-
-      // console.log(this.addCustomerForm.value)
-      let model ={
-        id : new Date().getTime(),
-        ...this.addCustomerForm.value
-      }
-      let localData : any
-      if(localStorage.getItem('customersData')){
-        localData = JSON.parse(localStorage.getItem('customersData') || '');
-        localData.push(model);
-      }else{
-        localData = [model];
-      }
-      localStorage.setItem('customersData',JSON.stringify(localData));
-      this.closeModal.emit();
-    }else{
-      // this.isSubmitted = false;
+      this.closeModal.emit(this.addCustomerForm.value)
     }
   }
 

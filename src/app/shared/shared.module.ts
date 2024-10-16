@@ -6,12 +6,14 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSelectModule } from 'ngx-select-ex';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { DndDirective } from './directives/dnd.directive';
 
 @NgModule({
   declarations: [
     AddCustomerComponent,
     AddPinComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    DndDirective
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
   exports : [
     AddCustomerComponent,
     AddPinComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    DndDirective
   ]
 })
 export class SharedModule { }

@@ -4,6 +4,14 @@
     align-items: center;
     // min-height: 100vh;
   }
+
+  .fileover {
+    opacity: 0.5;
+    transition: .5s ease;         
+    border: 2px solid green;
+    box-sizing:border-box;
+    border-radius: 10px;
+  }
   
   .form-container {
     width: 600px;
@@ -67,8 +75,46 @@
    } /* Default class applied to drop zones on over */
   .my-drop-zone { 
     width:  100%;
-    border: 1px solid #dee2e6;
+    
     height: 40px;
     border-radius: 4px;
     padding: 6px 12px;
+  }
+
+  .custom-file-input {
+    color: transparent;
+    opacity: 1;
+    border: 1px solid #dee2e6;
+    width:  100%;
+    /* visibility: hidden; */
+    position: relative;
+  }
+  
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  .custom-file-input::before {
+    content: "Choose & Drag and Drop files here";
+    color: #595c5f;
+    display: inline-block;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    visibility: visible;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .custom-file-input:hover::before{
+    text-decoration: underline;
+  }
+  
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  
+  .custom-file-input:active {
+    outline: 0;
   }

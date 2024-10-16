@@ -7,15 +7,19 @@ import { SharedModule } from './shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSelectModule} from 'ngx-select-ex';
+import { ModulesComponent } from './modules/modules.component';
+import { ModulesModule } from './modules/modules.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModulesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    ModulesModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
