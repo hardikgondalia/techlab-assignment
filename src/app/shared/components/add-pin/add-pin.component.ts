@@ -15,6 +15,7 @@ export class AddPinComponent {
   public addPinForm: FormGroup = new FormGroup({});
   public collaboratorData : any = [];
   public isSubmitted = false;
+  public selectedImage:any=[];
 
   constructor(private sanitizer: DomSanitizer,private appService:AppService,private fb: FormBuilder,){
     this.setForm();
@@ -53,6 +54,7 @@ export class AddPinComponent {
   }
 
   fileOverBase(event:any){
+  this.selectedImage = event;
   const file = this.setLocalCover(event);
   this.addPinForm.get('image')?.setValue(file);
   }

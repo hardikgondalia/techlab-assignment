@@ -34,39 +34,12 @@
             <td>{{data?.privacy}}</td>
             <td (click)="deletePin(index)"><i class="bi bi-trash3-fill"></i></td>
           </tr>
-          <!-- <tr>
-            <td>Pin 2</td>
-            <td><div class="image-placeholder"></div></td>
-            <td>
-              Customer 2 <br />
-              Customer 3
-            </td>
-            <td>Private</td>
-          </tr>
-          <tr>
-            <td>Pin 3</td>
-            <td><div class="image-placeholder"></div></td>
-            <td>
-              Customer 1 <br />
-              Customer 3
-            </td>
-            <td>Public</td>
-          </tr>
-          <tr>
-            <td>Pin 4</td>
-            <td><div class="image-placeholder"></div></td>
-            <td>
-              Customer 5 <br />
-              Customer 2
-            </td>
-            <td>Private</td>
-          </tr> -->
         </tbody>
       </table>
       </div>
   
-      <div *ngIf="pinListData?.length===0" class="no-available d-flex justify-content-center align-items-center">
-        <span>
+      <div *ngIf="pinListData?.length===0" class="d-flex justify-content-center align-items-center">
+        <span class="no-available d-flex justify-content-center align-items-center">
           No Pins Available
         </span>
       </div>

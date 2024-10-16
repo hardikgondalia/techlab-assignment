@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSelectModule} from 'ngx-select-ex';
 import { ModulesComponent } from './modules/modules.component';
 import { ModulesModule } from './modules/modules.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ModulesModule } from './modules/modules.module';
     ModulesModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     NgxSelectModule
   ],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pin-list',
@@ -12,7 +13,7 @@ export class PinListComponent implements OnInit{
   pinListData : any = [] ;
   customerData : any = [] ; 
 
-  constructor(){}
+  constructor(private toaster: ToastrService){}
 
   ngOnInit(): void {
     this.getLocalStorageData()
@@ -30,6 +31,7 @@ export class PinListComponent implements OnInit{
   deletePin(index:any){
     this.pinListData.splice(index, 1);
     localStorage.setItem('pinListData',JSON.stringify(this.pinListData));
+    this.toaster.success('Pin Deleted', 'Success')
   }
 
   addCustomerModalToggle(value:boolean,data?:any){
@@ -59,6 +61,12 @@ export class PinListComponent implements OnInit{
         localData = [model];
       }
       localStorage.setItem(localStorageData,JSON.stringify(localData));
+
+      if(localStorageData==='pinListData'){
+        this.toaster.success('Pin Added', 'Success')
+      }else{
+        this.toaster.success('Customer Added', 'Success')
+      }
 
       const pinData = JSON.parse(localStorage.getItem('pinListData') || '');
       const customerData = JSON.parse(localStorage.getItem('customersData') || '');
