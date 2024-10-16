@@ -60,7 +60,6 @@
           [allowClear]="true"
           [items]="countries"
           placeholder="No Country selected"
-          (selectionChanges)="countryChanged($event)"
           ></ngx-select>
           <div *ngIf="addCustomerForm.get('countries')?.touched || isSubmitted">
             <span *ngIf="addCustomerForm.get('countries')?.hasError('required')" class="mb-0 text-danger">Country is required</span>
